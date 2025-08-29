@@ -9,10 +9,8 @@ use ieee.std_logic_textio.all;
 entity top is
   Port (
   -- SIMULATION ONLY: expose internals -- 
-  sda_out_debug : out std_logic; 
-  sda_en_debug : out std_logic;
-   rx_data_debug: out std_logic_vector(7 downto 0); 
-   ack_received_debug: out std_logic;
+
+--   ack_received_debug: out std_logic;
     RsTx : out STD_LOGIC;
     sda  : inout std_logic;
     scl  : out std_logic;
@@ -275,7 +273,7 @@ begin
       address  => bme280_addr_7bit,
       address2 => bme280_addr_7bit,
       address3 => bme280_addr_7bit,
-rx_data_debug =>rx_data_debug,
+--rx_data_debug =>rx_data_debug,
       reg_addr => BME280_REG_CTRL_MEAS,
       reg_data => normal_mod,
 
@@ -382,7 +380,7 @@ rx_data_debug =>rx_data_debug,
       sda_out         => sda_o,
       sda_in          => sda_i,
       sda_en          => sda_t,
-      ack_received    => ack_received,
+--      ack_received    => ack_received,
       i2c_start       => start_i2c,
       i2c_done        => i2c_done
     );
