@@ -18,7 +18,7 @@ The **BME280 sensor** communicates via **I²C**. To calculate measurements (temp
 
 ---
 ## Block Diagram
-![FSM Phase 1](images/BD.png)
+![FSM Block_diagram](Block_diagram.pdf)
 
 --- 
 ##  BME280 I²C Calibration Registers
@@ -88,19 +88,22 @@ A baud-driven FSM outputs results over UART at **9600 baud**:
 
 ##  Verification
 - Logic analyzer confirmed **correct START/STOP**, ACKs, addressing, and byte assembly.
-  ![FSM Phase 1](images/logic1.png)
-  ![FSM Phase 1](images/logic2.png)
+  ![FSM ](images/logic1.png)
+  ![FSM ](images/logic2.png)
 
 - Test_Bench I2C_Master
-  ![FSM Phase 1](images/tb1.png)
-  ![FSM Phase 1](images/tb2.png)
-  ![FSM Phase 1](images/tb3.png)
+  ![FSM ](images/tb1.png)
+  ![FSM ](images/tb2.png)
+  ![FSM](images/tb3.png)
 
 - Timing goals achieved: **100 MHz system clock, 100 kHz I²C, 9600 UART**.  
 - Modular structure makes it easy to extend.
 
 ---
+## Uart 
+  ![FSM ](images/uart.png)
 
+---
 ## 📝 Conclusion
 This project demonstrates a **complete FPGA-based environmental sensing system** with the BME280:
 
