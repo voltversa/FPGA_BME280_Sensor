@@ -14,7 +14,7 @@ A laptop receives data over UART and runs a simple Python script to log them int
 
 The **BME280 sensor** communicates via **I²C**. To calculate measurements (temperature, humidity, pressure), calibration registers must be read first.
 ---
-![FSM projec](proj.png)
+![FSM projec](images/proj.png)
 
 ---
 
@@ -43,7 +43,7 @@ The **BME280 sensor** communicates via **I²C**. To calculate measurements (temp
 
 ---
 
-## ⚙ Code Structure
+##  Code Structure
 
 ### 1. `i2c_clk_gen`
 Generates a 100 kHz SCL from the FPGA’s 100 MHz system clock.  
@@ -53,13 +53,13 @@ f_scl = f_clk / (2 × DIVISOR)
 ### 2. `I2C_Master`
 Implements a 3-phase FSM:
 1. **Configuration write** 
-   ![FSM Phase 1](phase1.png)
+   ![FSM Phase 1](images/phase1.png)
 
 2. **Register pointer writes** (set target addresses)
-   ![FSM Phase 2](phase2.png)
+   ![FSM Phase 2](images/phase2.png)
 
 3. **Data reads** (store into buffers)  
-   ![FSM Phase 3](phase3.png)
+   ![FSM Phase 3](images/phase3.png)
 
 Timing uses delays (`2.5 µs`, `5 µs`, `10 µs`) derived from generics.  
 Handles **START/STOP**, ACK/NACK, and byte sequencing.
@@ -84,7 +84,15 @@ A baud-driven FSM outputs results over UART at **9600 baud**:
 ---
 
 ##  Verification
-- Logic analyzer confirmed **correct START/STOP**, ACKs, addressing, and byte assembly.  
+- Logic analyzer confirmed **correct START/STOP**, ACKs, addressing, and byte assembly.
+  ![FSM Phase 1](images/logic1.png)
+  ![FSM Phase 1](images/logic2.png)
+
+-Test_Bench I2C_Master
+  ![FSM Phase 1](images/tb1.png)
+  ![FSM Phase 1](images/tb2.png)
+  ![FSM Phase 1](images/tb3.png)
+
 - Timing goals achieved: **100 MHz system clock, 100 kHz I²C, 9600 UART**.  
 - Modular structure makes it easy to extend.
 
