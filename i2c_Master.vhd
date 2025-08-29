@@ -19,8 +19,8 @@ Port (
     i2c_done      : out std_logic := '0';
     scl_in        : in  std_logic;
     address       : in  std_logic_vector(6 downto 0);
-ack_received : out std_logic ; -- for debug 
-rx_data_debug : out std_logic_vector(7 downto 0);
+--ack_received : out std_logic ; -- for debug 
+--rx_data_debug : out std_logic_vector(7 downto 0);
     reg_addr      : in  std_logic_vector(7 downto 0);
     reg_data      : in  std_logic_vector(7 downto 0);
     address2       : in  std_logic_vector(6 downto 0);
@@ -397,7 +397,7 @@ begin
   -- ===================================================================
   -- Combinational process: next-state and SDA control (no storage)
   -- ===================================================================
-  process(state, scl_in, counter, bit_counter, loop_counter, rx_bit_counter)
+  process(state, scl_in, counter, bit_counter, loop_counter, rx_bit_counter,i2c_start)
   begin
     next_state  <= state;     -- default stay
     sda_out_reg <= '1';       -- default SDA high (pulled up)
@@ -769,7 +769,7 @@ begin
   -- ===================================================================
   sda_out      <= sda_out_reg;
   sda_en       <= sda_en_reg;
-  ack_received <= ack_received_reg;
+--  ack_received <= ack_received_reg;
   i2c_done     <= i2c_done_sig;
 
   -- Temperature calibration
@@ -824,7 +824,7 @@ begin
   -- Raw humidity
   RAW_Hum_MSB <= rx_reg_data(39);
   RAW_Hum_LSB <= rx_reg_data(40);
-ack_received <= ack_received_reg; 
-rx_data_debug <= rx_reg_data(1);
+--ack_received <= ack_received_reg; 
+--rx_data_debug <= rx_reg_data(1);
 end rtl;
 
