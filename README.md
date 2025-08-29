@@ -17,7 +17,10 @@ The **BME280 sensor** communicates via **I²C**. To calculate measurements (temp
 ![FSM projec](images/proj.png)
 
 ---
+## Block Diagram
+![FSM Phase 1](images/BD.png)
 
+--- 
 ##  BME280 I²C Calibration Registers
 
 - **Endianness:** multi-byte values are little-endian (LSB at lower address).  
@@ -88,7 +91,7 @@ A baud-driven FSM outputs results over UART at **9600 baud**:
   ![FSM Phase 1](images/logic1.png)
   ![FSM Phase 1](images/logic2.png)
 
--Test_Bench I2C_Master
+- Test_Bench I2C_Master
   ![FSM Phase 1](images/tb1.png)
   ![FSM Phase 1](images/tb2.png)
   ![FSM Phase 1](images/tb3.png)
