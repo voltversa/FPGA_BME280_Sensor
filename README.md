@@ -18,7 +18,8 @@ The **BME280 sensor** communicates via **I²C**. To calculate measurements (temp
 
 ---
 ## Block Diagram
-![FSM Block_diagram](Block_diagram.pdf)
+[Open the PDF](Block_diagram.pdf)
+
 
 --- 
 ##  BME280 I²C Calibration Registers
